@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Good Day Concrete — Online Presence Audit</title>
+<style>
+:root{--ink:#11161c;--body:#3b4550;--muted:#6c7783;--faint:#98a2ad;--paper:#fff;--ground:#f4f6f8;--panel:#eceff3;
+--rule:#dde2e8;--rule-2:#c2cad4;--slate:#3a3f4a;--f:#b3261e;--f-soft:#fbeae9;--d:#b0670a;--d-soft:#fdf1e0;
+--c:#8a7407;--c-soft:#fbf5dd;--a:#1a6444;--a-soft:#e3f0ea;--shadow:0 1px 2px rgba(17,22,28,.05),0 10px 28px -18px rgba(17,22,28,.3);}
+*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px 84px}h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600}p{margin:0 0 14px}
+.mast{padding:50px 0 0}.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:700}
+h1{font-size:clamp(31px,5.2vw,48px);line-height:1.07;margin:13px 0 0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:17px;margin:14px 0 0;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:19px;font-size:12.5px;color:var(--faint)}.meta b{color:var(--body);font-weight:600}
+.grade{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:26px 28px;margin:28px 0 0;box-shadow:var(--shadow)}
+@media(max-width:600px){.grade{grid-template-columns:1fr;gap:16px}}
+.badge{width:116px;height:116px;border-radius:6px;background:var(--d-soft);border:2px solid var(--d);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--d)}
+.badge .g{font-family:Georgia,serif;font-size:52px;line-height:1;font-weight:700}.badge .s{font-size:12px;letter-spacing:.06em;margin-top:5px;font-weight:700}
+.grade h2{margin:0 0 8px;font-size:22px}.grade p{margin:0;color:var(--body);font-size:15px}
+.finds{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;margin:22px 0 0;overflow:hidden}
+.find{background:var(--paper);padding:18px}.find .n{font-family:Georgia,serif;font-size:29px;line-height:1.1;color:var(--f);font-weight:700}
+.find .n.ok{color:var(--a)}.find .l{font-size:13px;color:var(--body);margin-top:8px;line-height:1.45}
+section{margin-top:50px}.sec-h{border-top:2px solid var(--ink);padding-top:12px;margin-bottom:6px}h2.sec{font-size:clamp(21px,3vw,27px);margin:0}
+.lede{color:var(--muted);font-size:16px;margin:8px 0 20px;max-width:66ch}
+.shot{background:#1b2028;border-radius:6px;padding:20px 22px;margin:18px 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13.5px;color:#dfe5ec;line-height:1.85;overflow-x:auto}
+.shot .lbl{font-family:-apple-system,sans-serif;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#7d8894;font-weight:700;margin-bottom:11px;display:block}
+.shot .ph{background:#4a1f1c;color:#ff9d94;padding:2px 7px;border-radius:3px;font-weight:600}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--paper);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:650px;font-size:14.5px}
+th{background:var(--panel);text-align:left;padding:11px 14px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--rule-2)}
+td{padding:13px 14px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}tbody tr:last-child td{border-bottom:none}
+td.cat{font-weight:600;width:22%}td.sc{width:70px;white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:3px}
+.p-f{background:var(--f-soft);color:var(--f)}.p-d{background:var(--d-soft);color:var(--d)}.p-c{background:var(--c-soft);color:var(--c)}.p-a{background:var(--a-soft);color:var(--a)}
+.call{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--f);border-radius:0 6px 6px 0;padding:20px 22px;margin:22px 0;box-shadow:var(--shadow)}
+.call.good{border-left-color:var(--a)}.call.slate{border-left-color:var(--slate)}
+.call-l{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--f);display:block;margin-bottom:8px}
+.call.good .call-l{color:var(--a)}.call.slate .call-l{color:var(--slate)}.call p:last-child{margin-bottom:0}
+code{background:var(--panel);padding:1.5px 6px;border-radius:3px;font-size:13px;font-family:ui-monospace,Consolas,monospace;color:var(--slate)}
+ul{margin:0 0 16px;padding-left:22px}li{margin-bottom:9px}strong{font-weight:650}
+.pri{counter-reset:p;margin:20px 0 0;padding:0;list-style:none}
+.pri li{counter-increment:p;position:relative;padding:16px 18px 16px 58px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;margin-bottom:10px;box-shadow:var(--shadow)}
+.pri li::before{content:counter(p);position:absolute;left:17px;top:16px;width:26px;height:26px;background:var(--slate);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif}
+.pri h4{margin:0 0 5px;font-size:16px;font-family:Georgia,serif}.pri p{margin:0;font-size:14px;color:var(--body)}
+footer{margin-top:58px;padding-top:20px;border-top:2px solid var(--ink);font-size:12.5px;color:var(--faint);line-height:1.75}
+</style></head><body><div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">Online Presence Audit &middot; Prepared 21 August 2026</div>
+  <h1>Good Day Concrete LLC</h1>
+  <p class="sub">You asked how we would get you more jobs, how a CRM works, and what the steps are.
+  This is the first step: what a Denver homeowner finds when they look you up, and why several things
+  on your website belong to somebody else.</p>
+  <div class="meta"><span><b>Prepared for</b> Miguel</span><span><b>Denver, Colorado</b></span>
+  <span><b>Reviewed</b> gooddayconcrete.net</span><span><b>By</b> AG1 Consulting</span></div>
+</header>
+
+<div class="grade">
+  <div class="badge"><div class="g">D</div><div class="s">38 / 100</div></div>
+  <div>
+    <h2>Your website is a template, and you are number 1,077 on it.</h2>
+    <p>Every image and file on your site is stored under <code>/uploads/sites/1077/</code>. That is
+    the signature of a mass-produced contractor website platform where one installation serves
+    hundreds of businesses. Yours is site number 1,077. <strong>The consequence is that some of the
+    copy on your site was written for a different trade entirely, and it is still there.</strong></p>
+  </div>
+</div>
+
+<div class="finds">
+  <div class="find"><div class="n">1077</div><div class="l">Your site number on a shared template platform serving hundreds of other contractors</div></div>
+  <div class="find"><div class="n">22</div><div class="l">Services listed on the homepage. That is keyword stuffing, and Google has penalised it for years</div></div>
+  <div class="find"><div class="n">2</div><div class="l">Contradictory claims about how long you have been trading, both on the same page</div></div>
+  <div class="find"><div class="n ok">GA4</div><div class="l">Analytics correctly installed, which puts you ahead of most contractors we audit</div></div>
+</div>
+
+<section>
+  <div class="sec-h"><h2 class="sec">Three things on your site that are not yours</h2></div>
+
+  <div class="call">
+    <span class="call-l">One: the offer is written for a car wash</span>
+    <p>Your homepage carries this promotion:</p>
+    <div class="shot"><span class="lbl">gooddayconcrete.net &middot; homepage</span>
+    Big Savings: 10% OFF Any <span class="ph">Detail Service</span> of $99 and Up</div>
+    <p><strong>"Detail service" is auto-detailing language.</strong> Concrete contractors do not sell
+    detail services. This is template copy written for a different trade that was never replaced.</p>
+    <p>It is also the wrong offer regardless. A ten percent discount on a ninety-nine dollar job is
+    ten dollars. Your actual work is driveways, foundations and patios worth thousands. The one
+    promotional message on your site is aimed at a customer you do not want.</p>
+  </div>
+
+  <div class="call">
+    <span class="call-l">Two: two different founding dates</span>
+    <p>Your site displays <strong>"Since 2010"</strong> and <strong>"25 Years of Experience"</strong>
+    as badges, next to each other. 2010 was sixteen years ago.</p>
+    <p>Both can be true if you personally have twenty-five years in concrete and founded the company
+    in 2010, but the site does not say that, so a customer reads it as a business that cannot keep its
+    own story straight. Pick one and explain it.</p>
+  </div>
+
+  <div class="call">
+    <span class="call-l">Three: the gallery cannot be verified as your work</span>
+    <p>Every photograph in your gallery is named sequentially &mdash; <code>gallery1.jpg</code>
+    through <code>gallery19.jpg</code> &mdash; and stored in the shared template folder rather than
+    uploaded individually. That is the naming pattern of images supplied with the template.</p>
+    <p>We cannot tell from the outside whether these are your pours or stock supplied by the platform.
+    <strong>A customer cannot tell either, and that is the problem.</strong> If they are your jobs,
+    they need captions, locations and dates. If they are not, they need replacing with photos from
+    your phone.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2 class="sec">The scorecard</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>Category</th><th>Score</th><th>Grade</th><th>What we found</th></tr></thead><tbody>
+    <tr><td class="cat">Measurement</td><td class="sc">7/10</td><td><span class="pill p-c">B&minus;</span></td>
+    <td><strong>Your strongest area.</strong> Google Analytics 4 correctly installed (<code>G-X5RMNXDDKG</code>) and reCAPTCHA on the form. Marked down only because we could not confirm conversion tracking, so you can see traffic but probably not which jobs came from where.</td></tr>
+    <tr><td class="cat">Contact accessibility</td><td class="sc">7/10</td><td><span class="pill p-c">B&minus;</span></td>
+    <td>Phone number present as a working tap-to-call link, physical address published, license number shown. Good.</td></tr>
+    <tr><td class="cat">Business email</td><td class="sc">2/10</td><td><span class="pill p-f">F</span></td>
+    <td>The published contact address is a personal Gmail account rather than an address on gooddayconcrete.net. On commercial and city work in particular, this reads as a one-man operation rather than a company.</td></tr>
+    <tr><td class="cat">Offer and promotion</td><td class="sc">1/10</td><td><span class="pill p-f">F</span></td>
+    <td>The only promotion on the site is a ten percent discount on "detail services" over $99 — template copy from another trade, and aimed at a job size you do not sell.</td></tr>
+    <tr><td class="cat">Service page structure</td><td class="sc">2/10</td><td><span class="pill p-f">F</span></td>
+    <td>Twenty-two services listed as a block, from Pool Excavation to Commercial Epoxy Flooring to Concrete Stairs. No hierarchy, no separate pages, no indication of what you actually want to be hired for.</td></tr>
+    <tr><td class="cat">Proof of work</td><td class="sc">3/10</td><td><span class="pill p-d">D</span></td>
+    <td>A gallery exists but the images cannot be attributed to your jobs from the outside, and none carry a caption, a location or a date.</td></tr>
+    <tr><td class="cat">Testimonials</td><td class="sc">5/10</td><td><span class="pill p-c">C</span></td>
+    <td>Three real named reviews — Travis K, Milan Fillmore and Christopher Jones — and one of them carries a genuine specific ("old walkway removed and repaved within one day"). Weakened by initials rather than full names and no dates or platform links.</td></tr>
+    <tr><td class="cat">Reviews and reputation</td><td class="sc">3/10</td><td><span class="pill p-d">D</span></td>
+    <td>BBB and Google Reviews are referenced but no star rating or review count is displayed anywhere on the site. For a Denver contractor, the Google rating is the single most important number a customer looks at.</td></tr>
+    <tr><td class="cat">Enquiry capture</td><td class="sc">4/10</td><td><span class="pill p-d">D</span></td>
+    <td>A contact form exists with a Send button, but no qualifying fields — no job type, no square footage, no address, no timeline, no budget. Every enquiry arrives needing a full conversation to price.</td></tr>
+    <tr><td class="cat">Trust and licensing</td><td class="sc">6/10</td><td><span class="pill p-c">C</span></td>
+    <td>"Bonded, Licensed, and Insured" stated and license 239897 shown, which is more than many. No insurance amounts, no bond amount, no warranty terms on the work.</td></tr>
+    <tr><td class="cat">Local search</td><td class="sc">5/10</td><td><span class="pill p-c">C</span></td>
+    <td>Denver, Lakewood and Aurora named. No individual city pages, so you are competing across the whole metro on a single page.</td></tr>
+    <tr><td class="cat">Differentiation</td><td class="sc">3/10</td><td><span class="pill p-d">D</span></td>
+    <td>"Trust Our Expertise", "Trained Concrete Contractors", "Superior and Customized Concrete Results". All template headings, all unverifiable, all identical to the other sites on this platform.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <div class="sec-h"><h2 class="sec">On the CRM question you asked</h2></div>
+  <div class="call slate">
+    <span class="call-l">The honest sequence</span>
+    <p>A CRM is worth having, but it solves the problem <em>after</em> the enquiry arrives &mdash;
+    chasing quotes, following up, stopping jobs falling through the cracks. It does not create
+    enquiries.</p>
+    <p>Right now your form asks nothing, so a CRM would be catching leads that contain a name and a
+    sentence. <strong>Fix the form first and the CRM has something worth managing.</strong> Ask for
+    job type, approximate square footage, the address and the timeline, and every enquiry arrives
+    already priceable.</p>
+    <p>Then the CRM does the part you actually want &mdash; automatic reply within seconds, follow-up
+    if you have not quoted in two days, and a record of every job you quoted and lost so you can go
+    back to them next season.</p>
+  </div>
+  <p>The good news is you already have the measurement layer installed, which is the piece most
+  contractors are missing and the piece that makes everything else provable.</p>
+</section>
+
+<section>
+  <div class="sec-h"><h2 class="sec">Priority order</h2></div>
+  <ol class="pri">
+    <li><h4>Remove the "detail service" offer</h4><p>It is another trade's copy and it advertises a discount on jobs you do not want. Replace it with something aimed at driveways and patios, or remove it entirely.</p></li>
+    <li><h4>Put your Google rating and review count on the site</h4><p>You reference Google Reviews but never show the number. In Denver home services this is the figure customers compare on.</p></li>
+    <li><h4>Rebuild the form to qualify</h4><p>Job type, square footage, address, timeline. This is the step that makes a CRM worth buying and cuts the time you spend on jobs you were never going to win.</p></li>
+    <li><h4>Cut twenty-two services down to five</h4><p>Lead with the work you want more of. The rest can live on a secondary page. Twenty-two keyword-stuffed services helps nobody, including Google.</p></li>
+    <li><h4>Fix the founding date and get a business email</h4><p>Pick one story about your experience and tell it properly, and move off Gmail onto your own domain.</p></li>
+    <li><h4>Caption the gallery or replace it</h4><p>Location, job type and date on every photo. If any images came with the template, swap them for your own pours.</p></li>
+  </ol>
+</section>
+
+<footer>
+  Prepared by AG1 Consulting, 21 August 2026, for Good Day Concrete LLC, 440 E 62nd Ave, Denver, CO
+  80216, license 239897.<br>
+  Findings taken directly from gooddayconcrete.net and its page source on that date. The shared
+  template platform and site number were identified from public file paths in the page source. We have
+  not asserted that any gallery image is or is not the company's own work, only that it cannot be
+  verified externally.
+</footer>
+</div></body></html>
